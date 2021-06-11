@@ -10,7 +10,7 @@ const Form = ({ children, ...attributes }) => (
 );
 
 const FormHeader = ({ children }) => (
-  <h2 className="text-center">{children}</h2>
+  <h2 className="text-3xl text-center">{children}</h2>
 );
 
 const FormGroup = ({ children }) => (

@@ -1,5 +1,5 @@
-import Main from "../components/Main";
-import SignInForm from "../components/auth_components/SignInForm";
+import Main from "../components/layout/Main";
+import SignInForm from "../components/auth/SignInForm";
 
 export default function SignIn() {
   return (

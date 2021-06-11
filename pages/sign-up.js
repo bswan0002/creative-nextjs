@@ -1,5 +1,5 @@
-import Main from "../components/Main";
-import SignUpForm from "../components/auth_components/SignUpForm";
+import Main from "../components/layout/Main";
+import SignUpForm from "../components/auth/SignUpForm";
 
 export default function SignUp() {
   return (

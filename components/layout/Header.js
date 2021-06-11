@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import HeaderButton from "./HeaderButton";
 import NavItems from "./NavItems";
 // Hooks
-import useOnClickOutside from "../hooks/useOnClickOutside";
+import useOnClickOutside from "../../hooks/useOnClickOutside";
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);

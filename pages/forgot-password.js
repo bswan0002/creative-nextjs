@@ -1,5 +1,5 @@
-import Main from "../components/Main";
-import ForgotPasswordForm from "../components/auth_components/ForgotPasswordForm";
+import Main from "../components/layout/Main";
+import ForgotPasswordForm from "../components/auth/ForgotPasswordForm";
 
 export default function ForgotPassword() {
   return (
