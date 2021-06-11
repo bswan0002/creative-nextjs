@@ -23,7 +23,7 @@ export default function NavItems({
       <div>
         {links.map((link) => {
           const defaultClass =
-            "px-7 py-4 flex cursor-pointer justify-between items-center font-sans tracking-wide border-b border-gray-400 font-bold";
+            "px-7 py-4 flex cursor-pointer justify-between items-center tracking-wide border-b border-gray-400 font-bold";
           return (
             <a
               href={link.route}
