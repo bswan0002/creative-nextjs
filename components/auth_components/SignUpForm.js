@@ -1,6 +1,18 @@
+// React / Next
 import React, { useRef, useState } from "react";
 import Link from "next/link";
-import { useAuth } from "../contexts/AuthContext";
+// Context
+import { useAuth } from "../../contexts/AuthContext";
+// Components
+import {
+  Form,
+  FormHeader,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Error,
+} from "./FormComponents";
 
 export default function SignUpForm() {
   // Form Input Refs
@@ -32,33 +44,11 @@ export default function SignUpForm() {
     setLoading(false);
   };
 
-  // Components
-  const FormGroup = ({ children }) => (
-    <div className="flex flex-col mb-4">{children}</div>
-  );
-
-  const Label = ({ children, ...attributes }) => (
-    <label className="mb-2" {...attributes}>
-      {children}
-    </label>
-  );
-
-  const Input = React.forwardRef(({ ...attributes }, ref) => (
-    <input className="bg-gray-200" {...attributes} ref={ref} />
-  ));
-
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col max-w-md p-4 m-4 mx-auto border border-gray-500 rounded-xl"
-      >
-        <h2 className="text-center">Sign Up</h2>
-        {error && (
-          <div className="p-2 my-4 text-center text-red-900 bg-red-300 rounded">
-            {error}
-          </div>
-        )}
+      <Form onSubmit={handleSubmit}>
+        <FormHeader>Sign Up</FormHeader>
+        {error && <Error>{error}</Error>}
         <FormGroup>
           <Label htmlFor="email">Email</Label>
           <Input type="text" id="email" ref={emailRef} />
@@ -75,14 +65,10 @@ export default function SignUpForm() {
             ref={confirmPasswordRef}
           />
         </FormGroup>
-        <button
-          type="submit"
-          disabled={loading}
-          className="border border-gray-500 rounded focus:bg-gray-100 hover:bg-gray-100"
-        >
+        <Button type="submit" disabled={loading}>
           Sign Up
-        </button>
-      </form>
+        </Button>
+      </Form>
       <div className="text-center">
         <span className="mb-2">Already have an account? </span>
         <Link href="/sign-in">
