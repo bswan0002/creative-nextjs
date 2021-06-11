@@ -15,3 +15,10 @@
     @apply text-3xl;
   }
 }
+
+@layer components {
+  /* Basic */
+  .link-classic {
+    @apply text-blue-700 transition-colors duration-200 cursor-pointer hover:underline hover:text-blue-800;
+  }
+}
