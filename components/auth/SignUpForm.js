@@ -1,6 +1,7 @@
 // React / Next
 import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // Context
 import { useAuth } from "../../contexts/AuthContext";
 // Components
@@ -24,6 +25,8 @@ export default function SignUpForm() {
   // State
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // Router
+  const router = useRouter();
 
   // Functions
   const handleSubmit = async (e) => {
@@ -36,9 +39,12 @@ export default function SignUpForm() {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      let isSuccessful = await signup(
+        emailRef.current.value,
+        passwordRef.current.value
+      );
+      if (isSuccessful) router.push("/");
     } catch {
-      console.log("error");
       setError("Failed to create an account.");
     }
     setLoading(false);
