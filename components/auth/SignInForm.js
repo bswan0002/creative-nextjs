@@ -1,6 +1,7 @@
 // React / Next
 import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 // Context
 import { useAuth } from "../../contexts/AuthContext";
 // Components
@@ -14,15 +15,18 @@ import {
   Error,
 } from "./FormComponents";
 
+
 export default function SignInForm() {
   // Form Input Refs
   const emailRef = useRef();
   const passwordRef = useRef();
   // Auth
-  const { signin } = useAuth();
+  const { signin, signout } = useAuth();
   // State
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // Router
+  const router = useRouter();
 
   // Functions
   const handleSubmit = async (e) => {
@@ -31,9 +35,12 @@ export default function SignInForm() {
     try {
       setError("");
       setLoading(true);
-      await signin(emailRef.current.value, passwordRef.current.value);
+      let isSuccessful = await signin(
+        emailRef.current.value, 
+        passwordRef.current.value
+      );
+      if (isSuccessful) router.push("/");
     } catch {
-      console.log("error");
       setError("Failed to sign in to account.");
     }
     setLoading(false);
@@ -61,10 +68,16 @@ export default function SignInForm() {
       </Form>
       <div className="text-center ">
         <span className="mb-2">Need to create an account? </span>
-        <Link href="/sign-up">
+        <Link href="/signup">
           <a className="link-classic">Sign Up</a>
         </Link>
       </div>
+      <div>
+        <Button onClick={signout}>
+          signout
+        </Button>
+      </div>
+
     </>
   );
 }
