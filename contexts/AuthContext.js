@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../firebase";
+import { useRouter } from "next/router";
 
 const AuthContext = React.createContext();
 
@@ -8,8 +9,11 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
+  // state
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  // router
+  const router = useRouter();
 
   const signup = (email, password) => {
     return auth.createUserWithEmailAndPassword(email, password);
@@ -20,7 +24,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = () => {
-    return auth.signOut();
+    auth.signOut()
+    .then(router.push("/"))
   };
 
   const resetPassword = (email) => {
