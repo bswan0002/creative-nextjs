@@ -68,7 +68,7 @@ export default function SignInForm() {
       </Form>
       <div className="text-center ">
         <span className="mb-2">Need to create an account? </span>
-        <Link href="/sign-up">
+        <Link href="/signup">
           <a className="link-classic">Sign Up</a>
         </Link>
       </div>
