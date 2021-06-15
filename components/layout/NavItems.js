@@ -38,12 +38,15 @@ export default function NavItems({
             </a>
           );
         })}
-      <div 
-        className="px-7 py-4 flex cursor-pointer justify-between items-center tracking-wide border-b border-gray-400 font-bold"
-        onClick={() => setIsExpanded(false), signout()}
-      >
-        Sign Out
-      </div>
+        <div
+          className="flex items-center justify-between py-4 font-bold tracking-wide border-b border-gray-400 cursor-pointer px-7"
+          onClick={() => {
+            setIsExpanded(false);
+            signout();
+          }}
+        >
+          Sign Out
+        </div>
       </div>
     </div>
   );

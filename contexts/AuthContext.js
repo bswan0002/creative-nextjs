@@ -24,8 +24,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signout = () => {
-    auth.signOut()
-    .then(router.push("/"))
+    return auth.signOut().then(router.push("/"));
   };
 
   const resetPassword = (email) => {
