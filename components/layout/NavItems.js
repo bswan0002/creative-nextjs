@@ -1,11 +1,13 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAuth } from "../../contexts/AuthContext";
 
 export default function NavItems({
   isExpanded,
   setIsExpanded,
   navItemsVisible,
 }) {
+  const { signout } = useAuth();
   const links = [
     { "text": "Services", "route": "#services" },
     { "text": "About Us", "route": "#about" },
@@ -36,6 +38,12 @@ export default function NavItems({
             </a>
           );
         })}
+      <div 
+        className="px-7 py-4 flex cursor-pointer justify-between items-center tracking-wide border-b border-gray-400 font-bold"
+        onClick={() => setIsExpanded(false), signout()}
+      >
+        Sign Out
+      </div>
       </div>
     </div>
   );
